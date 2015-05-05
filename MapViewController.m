@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "BikeShareLocations.h"
 
 @interface MapViewController ()
 
@@ -24,9 +25,9 @@
 
     
     // Do any additional setup after loading the view.
-
-    [_bikeShareLocations storeBikeShareLocations];
-    NSLog(@"%@", _bikeShareLocations.stationName);
+    BikeShareLocations *bikestorage = [[BikeShareLocations alloc]init];
+    [bikestorage storeBikeShareLocations];
+    NSLog(@"%@", bikestorage.stationName[0]);
 
     
     // start updating my location

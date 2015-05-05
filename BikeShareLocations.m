@@ -28,8 +28,8 @@
         NSError *error  = nil;
         // deserialise the information we get from the API
         NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
-        NSLog(@"%@", response);
-        NSLog(@"%@", data);
+//        NSLog(@"%@", response);
+//        NSLog(@"%@", data);
         
         // fast enumeration to put my data into the arrays
         if (!error) {
