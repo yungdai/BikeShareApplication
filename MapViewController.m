@@ -18,8 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //initialise http
-    _http = [[HTTPCommunication alloc]init];
+
     
     // Do any additional setup after loading the view.
     
@@ -37,6 +36,12 @@
     [self.locationManager startUpdatingLocation];
     // initalise the Map View Object
     self.mapView = [[MKMapView alloc]initWithFrame:self.view.frame];
+    
+    // get the locations of the bikeShares
+    self.bikeShareLocations = [[BikeShareLocations alloc]init];
+    
+    
+    
 
     self.mapView.showsUserLocation = YES;
     self.mapView.showsPointsOfInterest = YES;
@@ -68,5 +73,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end
