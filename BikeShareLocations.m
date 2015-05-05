@@ -26,16 +26,17 @@
     NSURL *url = [NSURL URLWithString:@"http://www.bikesharetoronto.com/stations/json"];
     [_http retrieve:url successBlock:^(NSData * response) {
         NSError *error  = nil;
-        // deserialise the informationwe get from the API
+        // deserialise the information we get from the API
         _bikeLocations = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
         NSLog(@"%@", response);
         NSLog(@"%@", _bikeLocations);
         
         
         if (!error) {
-            NSDictionary *value = _bikeLocations[@"value"];
-            if (value && value[@"bikeLocations"]) {
+            NSDictionary *value = _bikeLocations[@"stationBean"];
+            if (value && value[@"stationName"]) {
                 _responseID = value[@"id"];
+                [_stationName setText:value["@stationName"]];
                 
             }
         }

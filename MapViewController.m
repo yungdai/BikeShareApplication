@@ -21,11 +21,7 @@
 
     
     // Do any additional setup after loading the view.
-    
-    // find your current location
-    self.locationManager = [[CLLocationManager alloc]init];
-    // look to myself for the CLLocationManager Delegate
-    self.locationManager.delegate = self;
+
 
     if(IS_OS_8_OR_LATER) {
         [self.locationManager requestWhenInUseAuthorization];
@@ -35,9 +31,19 @@
     // start updating my location
     [self.locationManager startUpdatingLocation];
     // initalise the Map View Object
+    // Layer 1 in this view
     self.mapView = [[MKMapView alloc]initWithFrame:self.view.frame];
     
+    
+    
+    // find your current location
+    // Layer 2 in this view
+    self.locationManager = [[CLLocationManager alloc]init];
+    // look to myself for the CLLocationManager Delegate
+    self.locationManager.delegate = self;
+    
     // get the locations of the bikeShares
+    // Layer 3 in this view
     self.bikeShareLocations = [[BikeShareLocations alloc]init];
     
     
