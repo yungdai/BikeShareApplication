@@ -17,6 +17,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // Create the TabBarController Programatically Implemented and set to the root view controller.
+    // Do any additional setup after loading the view, typically from a nib.
+    // initialise and set the map view
+    MapViewController *mapViewController = [[MapViewController alloc] init];
+    mapViewController.title = @"Bike Share Locations";
+    mapViewController.view.backgroundColor = [UIColor blueColor];
+    
+    // initialise and set the more info view
+    MoreInfoViewController *moreInfoViewController =
+    [[MoreInfoViewController alloc]init];
+    moreInfoViewController.title = @"More Info";
+    moreInfoViewController.view.backgroundColor = [UIColor redColor];
+    
+    // create the tab bar controller
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    [tabBarController setViewControllers:@[mapViewController, moreInfoViewController]];
+    
+    // create the main window and show the tab bar
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.window.rootViewController = tabBarController;
     return YES;
 }
 

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "MapViewController.h"
+#import <MapKit/MapKit.h>
+#import "MoreInfoViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

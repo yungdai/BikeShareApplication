@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  UserLocation.h
 //  BikeShareApplication
 //
 //  Created by Yung Dai on 2015-05-04.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTTPCommunication.h"
 
-@interface ViewController : UIViewController
-
+@interface UserLocation : UIBarButtonItem
 
 @end
-
