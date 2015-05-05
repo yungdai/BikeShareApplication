@@ -12,11 +12,14 @@
 @interface BikeShareLocations : NSObject
 
 @property (strong, nonatomic) NSDictionary *bikeLocations;
-@property (strong, nonatomic) NSMutableArray *city;
 @property (strong, nonatomic) NSMutableArray *availableBikes;
 @property (strong, nonatomic) NSMutableArray *latitude;
 @property (strong, nonatomic) NSMutableArray *longitude;
 @property (strong, nonatomic) NSMutableArray *stationName;
+@property (strong, nonatomic) NSMutableArray *stationID;
+@property (strong, nonatomic) NSMutableArray *availableDocks;
+@property (strong, nonatomic) NSMutableArray *totalDocks;
+
 @property (strong, nonatomic) HTTPCommunication *http;
 @property (strong, nonatomic) NSNumber *responseID;
 

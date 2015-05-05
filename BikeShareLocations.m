@@ -35,9 +35,18 @@
         if (!error) {
             NSArray *stationBeans = [data valueForKey:@"stationBeanList"];
             _stationName = [[NSMutableArray alloc]init];
-            _latitude = [[NSMutableArray alloc]init];            for (NSDictionary *results in stationBeans) {
+            _latitude = [[NSMutableArray alloc]init];
+            _longitude = [[NSMutableArray alloc]init];
+            _stationID = [[NSMutableArray alloc]init];
+            _availableBikes = [[NSMutableArray alloc]init];
+            for (NSDictionary *results in stationBeans) {
                 [_stationName addObject:[results objectForKey:@"stationName"]];
-                [_latitude addObject:[results objectForKey: @"latitude"]];
+                [_latitude addObject:[results objectForKey:@"latitude"]];
+                [_longitude addObject:[results objectForKey:@"longitude"]];
+                [_stationID addObject:[results objectForKey:@"id"]];
+                [_availableBikes addObject:[results objectForKey:@"availableBikes"]];
+
+                
             }
                                          
         }
