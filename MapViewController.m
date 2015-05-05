@@ -22,7 +22,9 @@
     
     // Do any additional setup after loading the view.
 
-
+    [_bikeShareLocations storeBikeShareLocations];
+    NSLog(@"%@", _bikeShareLocations);
+    
     if(IS_OS_8_OR_LATER) {
         [self.locationManager requestWhenInUseAuthorization];
         [self.locationManager requestAlwaysAuthorization];

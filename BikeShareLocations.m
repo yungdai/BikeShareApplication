@@ -27,22 +27,22 @@
     [_http retrieve:url successBlock:^(NSData * response) {
         NSError *error  = nil;
         // deserialise the information we get from the API
-        _bikeLocations = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
+        NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
         NSLog(@"%@", response);
-        NSLog(@"%@", _bikeLocations);
+        NSLog(@"%@", data);
         
-        
+        // fast enumeration to put my data into the arrays
         if (!error) {
-            NSDictionary *value = _bikeLocations[@"stationBean"];
-            if (value && value[@"stationName"]) {
-                _responseID = value[@"id"];
-                [_stationName setText:value["@stationName"]];
-                
+            NSArray *stationBeans = [data valueForKey:@"stationBeanList"];
+            _stationName = [[NSMutableArray alloc]init];
+            _latitude = [[NSMutableArray alloc]init];            for (NSDictionary *results in stationBeans) {
+                [_stationName addObject:[results objectForKey:@"stationName"]];
+                [_latitude addObject:[results objectForKey: @"latitude"]];
             }
+                                         
         }
-        
     }];
 }
 
-
 @end
+     
