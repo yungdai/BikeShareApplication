@@ -13,6 +13,9 @@
 @end
 
 @implementation MapViewController
+{
+
+}
 
 
 - (void)viewDidLoad {
@@ -23,13 +26,9 @@
     // Do any additional setup after loading the view.
 
     [_bikeShareLocations storeBikeShareLocations];
-    NSLog(@"%@", _bikeShareLocations);
+    NSLog(@"%@", _bikeShareLocations.stationName);
+
     
-    if(IS_OS_8_OR_LATER) {
-        [self.locationManager requestWhenInUseAuthorization];
-        [self.locationManager requestAlwaysAuthorization];
-        
-    }
     // start updating my location
     [self.locationManager startUpdatingLocation];
     // initalise the Map View Object
@@ -41,9 +40,16 @@
     // find your current location
     // Layer 2 in this view
     self.locationManager = [[CLLocationManager alloc]init];
+
+    
+    if(IS_OS_8_OR_LATER) {
+        [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager requestAlwaysAuthorization];
+        
+    }
+
     // look to myself for the CLLocationManager Delegate
     self.locationManager.delegate = self;
-    
     // get the locations of the bikeShares
     // Layer 3 in this view
     self.bikeShareLocations = [[BikeShareLocations alloc]init];
