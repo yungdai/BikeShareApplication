@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BikeShareLocations.h"
+#import "BikeShareLocation.h"
+#import "BikeShareLocationManager.h"
 
 // check to see if the iOS is 8.0 or higher
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
@@ -19,9 +20,8 @@
 
 @property (nonatomic, strong) MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) BikeShareLocationManager *bikeLocationManager;
 
-// a property of the bikeShareLocations
-@property (strong, nonatomic) BikeShareLocations *bikeShareLocations;
 
 
 
