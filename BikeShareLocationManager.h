@@ -13,8 +13,11 @@
 
 @interface BikeShareLocationManager : NSObject
 
+// get the ability to initialise the HTTP string
 @property (strong, nonatomic) HTTPCommunication *http;
 
+
+// create a method that parses the JSON
 - (void)getBikeShareLocationsOnSucess:(void (^)(NSArray *locations))success;
 
 
