@@ -23,6 +23,6 @@
 @property (strong, nonatomic) HTTPCommunication *http;
 @property (strong, nonatomic) NSNumber *responseID;
 
-- (void)storeBikeShareLocations;
+- (void)getBikeShareLocations;
 
 @end

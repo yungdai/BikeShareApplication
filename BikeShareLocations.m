@@ -21,7 +21,7 @@
     return self;
 }
 
-- (void)storeBikeShareLocations {
+- (void)getBikeShareLocations {
     // retrieve the joke using HTTP communication
     NSURL *url = [NSURL URLWithString:@"http://www.bikesharetoronto.com/stations/json"];
     [_http retrieve:url successBlock:^(NSData * response) {

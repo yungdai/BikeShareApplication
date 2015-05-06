@@ -25,9 +25,10 @@
 
     
     // Do any additional setup after loading the view.
-    BikeShareLocations *bikestorage = [[BikeShareLocations alloc]init];
-    [bikestorage storeBikeShareLocations];
-    NSLog(@"%@", bikestorage.stationName[0]);
+    _bikeShareLocations = [[BikeShareLocations alloc]init];
+    [_bikeShareLocations getBikeShareLocations];
+
+    NSLog(@"%@", _bikeShareLocations.stationName[0]);
 
     
     // start updating my location
