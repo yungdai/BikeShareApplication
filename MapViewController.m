@@ -114,8 +114,8 @@
         
     }
     
-    bikeShareAnnotation.image = [UIImage imageNamed:@"Bike"];
-    bikeShareAnnotation.frame = CGRectMake(0, 0, 30, 30);
+    bikeShareAnnotation.image = [UIImage imageNamed:@"Bike_Share_Toronto_logo"];
+    bikeShareAnnotation.frame = CGRectMake(0, 0, 45, 30);
     bikeShareAnnotation.canShowCallout = YES;
     
     return bikeShareAnnotation;
