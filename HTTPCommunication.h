@@ -14,7 +14,7 @@
 // successBlock will contain the blcok you're going to call when the request is completed
 @property (copy, nonatomic) void (^sucessBlock)(NSData *);
 
-// Craft and request using NSURLREequest and NSURLConnection
+// Craft and request using NSURLRequest and NSURLConnection
 - (void) retrieve:(NSURL *) url successBlock:(void(^)(NSData *))successBlock;
 
 // Task has finished downloading delegate method

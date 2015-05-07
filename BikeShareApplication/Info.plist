@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUsageDescription</key>
-	<string>Bike Share is using your locaiton</string>
+	<string>Bike Share is using your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Bike Share would like to access your location!</string>
 	<key>CFBundleDevelopmentRegion</key>

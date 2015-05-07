@@ -13,6 +13,8 @@
 {
     self = [super init];
     if (self) {
+        
+        // initialise an HTTPCommunication object called _http
         _http = [[HTTPCommunication alloc]init];
     }
     return self;
@@ -21,6 +23,7 @@
 // parsing data method, it requires a block of code to run and have and be successful
 - (void)getBikeShareLocationsOnSucess:(void (^)(NSArray *locations))success {
     NSURL *url = [NSURL URLWithString:@"http://www.bikesharetoronto.com/stations/json"];
+    // run the HTTPCommunciation URL request method
     [_http retrieve:url successBlock:^(NSData * response) {
         NSError *error  = nil;
         NSDictionary *data = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
@@ -28,7 +31,7 @@
         NSLog(@"%@",data);
         
         
-        
+        //  if there are no errors inside the data dictionary
         if (!error) {
             NSArray *value = [data valueForKey:@"stationBeanList"];
             // create an array to store the final bikeShareLocations

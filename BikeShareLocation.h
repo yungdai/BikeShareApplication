@@ -20,4 +20,6 @@
 // subtitle will be equal to the availablebikes
 @property (nonatomic, readwrite, copy) NSString *subtitle;
 
+
+
 @end
