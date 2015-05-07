@@ -11,6 +11,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BikeShareLocation.h"
 #import "BikeShareLocationManager.h"
+#import "HTTPCommunication.h"
+
 
 // check to see if the iOS is 8.0 or higher
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)

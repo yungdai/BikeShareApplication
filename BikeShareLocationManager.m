@@ -36,7 +36,7 @@
             for (NSDictionary *results in value) {
                 // create a BikeShareLocation Object
                 BikeShareLocation *bikeShareLocation = [BikeShareLocation new];
-                // assign all the properties fromt he BikeShareLocation Class
+                // assign all the properties fromt the BikeShareLocation Class
                 bikeShareLocation.title = results[@"stationName"];
                 NSNumber *avaibleBikes = results[@"availableBikes"];
                 bikeShareLocation.subtitle = [NSString stringWithFormat:@"Available Bikes: %@", [avaibleBikes stringValue]];
