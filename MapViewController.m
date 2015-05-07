@@ -43,7 +43,7 @@
     
     // user location setup
     self.locationManager = [[CLLocationManager alloc]init];
-    [self.locationManager startUpdatingLocation];
+
 
     if(IS_OS_8_OR_LATER) {
         [self.locationManager requestWhenInUseAuthorization];
@@ -51,13 +51,17 @@
         
     }
     
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.distanceFilter = kCLLocationAccuracyKilometer;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-  
+    
+    [self.locationManager startUpdatingLocation];
+
+
+
     self.mapView.showsUserLocation = YES;
-
     self.mapView.showsPointsOfInterest = YES;
-
+    
+    
 
 
     
@@ -68,6 +72,8 @@
 
 
 }
+
+
 
 // run this method when the user updates his information, plot down the bike locations onto the map
 
@@ -86,6 +92,17 @@
     
 }
 
+// method to zoom to the current user location
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    MKAnnotationView *annotationView = [views objectAtIndex:0];
+    id<MKAnnotation> mapPoint = [annotationView annotation];
+    
+    if (mapPoint == mapView.userLocation) {
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([mapPoint coordinate] ,700 , 700);
+        [mapView setRegion:region animated:YES];
+    }
+}
 
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
