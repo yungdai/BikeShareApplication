@@ -56,6 +56,7 @@
 		1A84EB131AF9224F000AD29F /* BikeShareLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeShareLocation.h; sourceTree = "<group>"; };
 		1A84EB141AF9224F000AD29F /* BikeShareLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeShareLocation.m; sourceTree = "<group>"; };
 		1A84EB161AF96B6D000AD29F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1AD534961AFC00CA00E24EC8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		1AD8A58F1AFAB15B000F6C24 /* BikeShareLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeShareLocationManager.h; sourceTree = "<group>"; };
 		1AD8A5901AFAB15B000F6C24 /* BikeShareLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeShareLocationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +84,7 @@
 		1A04FA061AF7DFD90024568D = {
 			isa = PBXGroup;
 			children = (
+				1AD534961AFC00CA00E24EC8 /* AddressBook.framework */,
 				1A04FA421AF7E20B0024568D /* CoreLocation.framework */,
 				1A04FA401AF7E1EE0024568D /* MapKit.framework */,
 				1A04FA3C1AF7E0780024568D /* Controllers */,

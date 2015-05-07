@@ -69,8 +69,7 @@
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
 
-
-
+    
 }
 
 
@@ -92,7 +91,21 @@
     
 }
 
+// when I tap the callout accessory I launch the maps app for that location
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    id <MKAnnotation> annotation = view.annotation;
+    CLLocationCoordinate2D coordinate = [annotation coordinate];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil];
+    MKMapItem *mapitem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    mapitem.name = annotation.title;
+    [mapitem openInMapsWithLaunchOptions:nil];
+}
+
 // method to zoom to the current user location
+/* Tells the delegate that one or more annotation views were added to the map.
+ By the time this method is called, the specified views are already added to the map
+ */
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
 {
     MKAnnotationView *annotationView = [views objectAtIndex:0];
@@ -104,7 +117,9 @@
     }
 }
 
-
+// method to set custom annotation images
+// Tells the delegate that one or more annotation views were added to the map.
+// By the time this method is called, the specified views are already added to the map.
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     MKAnnotationView *bikeShareAnnotation = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"annoView"];
@@ -114,9 +129,17 @@
         
     }
     
+    
+    
     bikeShareAnnotation.image = [UIImage imageNamed:@"Bike_Share_Toronto_logo"];
     bikeShareAnnotation.frame = CGRectMake(0, 0, 45, 30);
     bikeShareAnnotation.canShowCallout = YES;
+    
+    // on the right of my Callout display a UIButton
+    bikeShareAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+
+
     
     return bikeShareAnnotation;
 }
