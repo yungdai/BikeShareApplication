@@ -137,6 +137,10 @@
     
     // on the right of my Callout display a UIButton
     bikeShareAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    // Add an image to the left callout.
+    UIImageView *iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bike_Share_Toronto_logo"]];
+    iconView.frame = CGRectMake(0, 0, 40, 30);
+    bikeShareAnnotation.leftCalloutAccessoryView = iconView;
     
 
 
