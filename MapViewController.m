@@ -7,7 +7,7 @@
 //
 
 #import "MapViewController.h"
-#import "BikeShareLocation.h"
+
 
 
 
@@ -65,11 +65,12 @@
     self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
 
-    
+
 
 }
 
 // run this method when the user updates his information, plot down the bike locations onto the map
+
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
 
     [self.bikeLocationManager getBikeShareLocationsOnSucess:^(NSArray *locations) {
@@ -82,13 +83,14 @@
 
     }];
     
-
     
 }
 
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForannotation:(id<MKAnnotation>)annotation
+
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
-    MKAnnotationView *bikeShareAnnotation = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"annoView"];
+    MKAnnotationView *bikeShareAnnotation = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"annoView"];
     
     if([annotation isKindOfClass:[BikeShareLocation class]]) {
         bikeShareAnnotation = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annoView"];

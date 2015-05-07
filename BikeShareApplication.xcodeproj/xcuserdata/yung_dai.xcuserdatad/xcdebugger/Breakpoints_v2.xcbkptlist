@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapViewController.m"
-            timestampString = "452717747.843189"
+            timestampString = "452718720.815013"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-mapView:viewForannotation:"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
