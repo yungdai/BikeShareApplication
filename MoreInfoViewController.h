@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MoreInfoViewController : UITabBarController
+@property (nonatomic, retain) NSString *BikeStationData;
 
 @end

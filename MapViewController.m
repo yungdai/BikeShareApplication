@@ -54,6 +54,18 @@
     self.locationManager.distanceFilter = kCLLocationAccuracyKilometer;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
+    
+    //  plot the location of all the bikeShareLocations
+    [self.bikeLocationManager getBikeShareLocationsOnSucess:^(NSArray *locations) {
+        
+        for (BikeShareLocation *location in locations)
+        {
+            
+            [self.mapView addAnnotation:location];
+        }
+        
+    }];
+    
     [self.locationManager startUpdatingLocation];
 
 
@@ -74,22 +86,7 @@
 
 
 
-// run this method when the user updates his information, plot down the bike locations onto the map
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-
-    [self.bikeLocationManager getBikeShareLocationsOnSucess:^(NSArray *locations) {
-
-        for (BikeShareLocation *location in locations)
-        {
-            
-            [self.mapView addAnnotation:location];
-        }
-
-    }];
-    
-    
-}
 
 // when I tap the callout accessory I launch the maps app for that location
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control

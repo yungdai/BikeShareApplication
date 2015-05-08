@@ -40,12 +40,20 @@
                 // create a BikeShareLocation Object
                 BikeShareLocation *bikeShareLocation = [BikeShareLocation new];
                 // assign all the properties fromt the BikeShareLocation Class
-                bikeShareLocation.title = results[@"stationName"];
-                NSNumber *avaibleBikes = results[@"availableBikes"];
-                bikeShareLocation.subtitle = [NSString stringWithFormat:@"Available Bikes: %@", [avaibleBikes stringValue]];
+                bikeShareLocation.title = @"Tap to get directions here";
+                NSNumber *availableBikes = results[@"availableBikes"];
+                NSNumber *availableDocks = results[@"availableDocks"];
+
                 NSNumber *latitude = results[@"latitude"];
                 NSNumber *longitude = results[@"longitude"];
                 bikeShareLocation.coordinate = CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]);
+                
+                // additional location information
+                bikeShareLocation.totalDocks = results[@"totalDocks"];
+                bikeShareLocation.availableDocks = results[@"availableDocks"];
+                bikeShareLocation.availableBikes = results[@"availableBikes"];
+                bikeShareLocation.stationName = results[@"stationName"];
+                bikeShareLocation.subtitle = [NSString stringWithFormat:@"Available Bikes: %@, Available Docks: %@",[availableBikes stringValue],[availableDocks stringValue]];
                 [bikeShareLocations addObject:bikeShareLocation];
             }
             

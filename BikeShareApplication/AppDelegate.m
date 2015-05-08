@@ -22,12 +22,14 @@
     // initialise and set the map view
     MapViewController *mapViewController = [[MapViewController alloc] init];
     mapViewController.title = @"Bike Share Locations";
+    mapViewController.tabBarItem.image = [UIImage imageNamed:@"cycle_bike"];
     mapViewController.view.backgroundColor = [UIColor blueColor];
     
     // initialise and set the more info view
     MoreInfoViewController *moreInfoViewController =
     [[MoreInfoViewController alloc]init];
     moreInfoViewController.title = @"More Info";
+    moreInfoViewController.tabBarItem.image = [UIImage imageNamed:@"info"];
     moreInfoViewController.view.backgroundColor = [UIColor redColor];
     
     // create the tab bar controller
