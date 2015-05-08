@@ -39,8 +39,9 @@
             for (NSDictionary *results in value) {
                 // create a BikeShareLocation Object
                 BikeShareLocation *bikeShareLocation = [BikeShareLocation new];
-                // assign all the properties fromt the BikeShareLocation Class
-                bikeShareLocation.title = @"Tap to get directions here";
+                // assign all the properties from the BikeShareLocation Class
+                bikeShareLocation.title = results[@"stationName"];
+
                 NSNumber *availableBikes = results[@"availableBikes"];
                 NSNumber *availableDocks = results[@"availableDocks"];
 
@@ -53,6 +54,8 @@
                 bikeShareLocation.availableDocks = results[@"availableDocks"];
                 bikeShareLocation.availableBikes = results[@"availableBikes"];
                 bikeShareLocation.stationName = results[@"stationName"];
+                
+                // now that availableBikes has a value I can use it in my string below
                 bikeShareLocation.subtitle = [NSString stringWithFormat:@"Available Bikes: %@, Available Docks: %@",[availableBikes stringValue],[availableDocks stringValue]];
                 [bikeShareLocations addObject:bikeShareLocation];
             }
