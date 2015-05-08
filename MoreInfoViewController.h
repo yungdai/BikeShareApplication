@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface MoreInfoViewController : UITabBarController
-@property (nonatomic, retain) NSString *BikeStationData;
+@property (nonatomic, retain) id<MKAnnotation> bikeStationData;
+@property (strong, nonatomic) UILabel *moreInformationLabel;
+@property (strong, nonatomic) NSString *string;
+
 
 @end

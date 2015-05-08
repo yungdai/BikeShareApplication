@@ -12,6 +12,7 @@
 #import "BikeShareLocation.h"
 #import "BikeShareLocationManager.h"
 #import "HTTPCommunication.h"
+#import "MoreInfoViewController.h"
 
 
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) BikeShareLocationManager *bikeLocationManager;
+@property (strong, nonatomic) MoreInfoViewController *moreInfoViewController;
 
 
 

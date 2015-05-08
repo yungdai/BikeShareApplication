@@ -25,6 +25,10 @@
     mapViewController.tabBarItem.image = [UIImage imageNamed:@"cycle_bike"];
     mapViewController.view.backgroundColor = [UIColor blueColor];
     
+    // create a MapViewController Nav Bar and init it into the mapViewController
+    UINavigationController *mapViewControllerNav = [[UINavigationController alloc]initWithRootViewController: mapViewController];
+
+    
     // initialise and set the more info view
     MoreInfoViewController *moreInfoViewController =
     [[MoreInfoViewController alloc]init];
@@ -34,7 +38,7 @@
     
     // create the tab bar controller
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    [tabBarController setViewControllers:@[mapViewController, moreInfoViewController]];
+    [tabBarController setViewControllers:@[mapViewControllerNav, moreInfoViewController]];
     
     // create the main window and show the tab bar
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];

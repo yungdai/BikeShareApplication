@@ -92,14 +92,32 @@
 
 
 // when I tap the callout accessory I launch the maps app for that location
+// mapView:annotationView:calloutAccessoryControlTapped: is called when the user taps on left & right callout accessory UIControls
+
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
+    
     id <MKAnnotation> annotation = view.annotation;
     CLLocationCoordinate2D coordinate = [annotation coordinate];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil];
     MKMapItem *mapitem = [[MKMapItem alloc] initWithPlacemark:placemark];
     mapitem.name = annotation.title;
-    [mapitem openInMapsWithLaunchOptions:mapLaunchOptions];
+    
+    
+    if (control == view.rightCalloutAccessoryView) {
+    
+        MoreInfoViewController *moreInfoViewController = self.tabBarController.viewControllers[1];
+        
+        moreInfoViewController.bikeStationData = annotation;
+        moreInfoViewController.string = annotation.title;
+
+        
+        [self.tabBarController setSelectedIndex:1];
+        
+
+        
+    } 
+
 }
 
 // method to zoom to the current user location
@@ -126,29 +144,51 @@
 {
     MKAnnotationView *bikeShareAnnotation = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"annoView"];
     
-    if([annotation isKindOfClass:[BikeShareLocation class]]) {
-        bikeShareAnnotation = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annoView"];
-        
+    if([annotation isKindOfClass:[BikeShareLocation class]])
+    {
+        if (bikeShareAnnotation == nil)
+        {
+            bikeShareAnnotation = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annoView"];
+            
+            
+            UIImageView *iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bike_Share_Toronto_logo"]];
+            iconView.frame = CGRectMake(0, 0, 45, 30);
+            
+            bikeShareAnnotation.leftCalloutAccessoryView = iconView;
+            
+            
+            bikeShareAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            bikeShareAnnotation.canShowCallout = YES;
+            // Add an image to the left callout.
+            
+            bikeShareAnnotation.image = [UIImage imageNamed:@"Bike_Share_Toronto_logo"];
+            bikeShareAnnotation.frame = CGRectMake(0, 0, 45, 30);
+            
+            
+            
+            UITapGestureRecognizer *tapReg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnImageView:)];
+            [iconView addGestureRecognizer:tapReg];
+            iconView.userInteractionEnabled = YES;
+        }
     }
     
-    
-    
-    bikeShareAnnotation.image = [UIImage imageNamed:@"Bike_Share_Toronto_logo"];
-    bikeShareAnnotation.frame = CGRectMake(0, 0, 45, 30);
-    bikeShareAnnotation.canShowCallout = YES;
-    
     // on the right of my Callout display a UIButton
-    bikeShareAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    // Add an image to the left callout.
-    UIImageView *iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bike_Share_Toronto_logo"]];
-    iconView.frame = CGRectMake(0, 0, 45, 30);
-    bikeShareAnnotation.leftCalloutAccessoryView = iconView;
-    
-
-
-    
+   
     return bikeShareAnnotation;
 }
+
+- (void)didTapOnImageView:(id)sender
+{
+    id <MKAnnotation> annotation = [self.mapView selectedAnnotations][0];
+    CLLocationCoordinate2D coordinate = [annotation coordinate];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil];
+    MKMapItem *mapitem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    mapitem.name = annotation.title;
+    [mapitem openInMapsWithLaunchOptions:mapLaunchOptions];
+}
+
+// mapView:annotationView:calloutAccessoryControlTapped: is called when the user taps on left & right callout accessory UIControls.
+
 
 
 @end
