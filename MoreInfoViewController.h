@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "BikeShareLocation.h"
 
 @interface MoreInfoViewController : UITabBarController
-@property (nonatomic, retain) id<MKAnnotation> bikeStationData;
+@property (strong, nonatomic) id<MKAnnotation> bikeStationData;
 @property (strong, nonatomic) UILabel *moreInformationLabel;
 @property (strong, nonatomic) NSString *string;
 

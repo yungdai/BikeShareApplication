@@ -104,6 +104,7 @@
     mapitem.name = annotation.title;
     
     
+    
     if (control == view.rightCalloutAccessoryView) {
     
         MoreInfoViewController *moreInfoViewController = self.tabBarController.viewControllers[1];
@@ -139,7 +140,7 @@
 
 // method to set custom annotation images
 // Tells the delegate that one or more annotation views were added to the map.
-// By the time this method is called, the specified views are already added to the map.
+// By the time this method is called EACH time an annocation is created
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     MKAnnotationView *bikeShareAnnotation = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"annoView"];
@@ -149,34 +150,28 @@
         if (bikeShareAnnotation == nil)
         {
             bikeShareAnnotation = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annoView"];
-            
-            
-            UIImageView *iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bike_Share_Toronto_logo"]];
-            iconView.frame = CGRectMake(0, 0, 45, 30);
-            
-            bikeShareAnnotation.leftCalloutAccessoryView = iconView;
-            
-            
-            bikeShareAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            bikeShareAnnotation.canShowCallout = YES;
-            // Add an image to the left callout.
-            
             bikeShareAnnotation.image = [UIImage imageNamed:@"Bike_Share_Toronto_logo"];
             bikeShareAnnotation.frame = CGRectMake(0, 0, 45, 30);
+            // Add an image to the left callout.
+            UIImageView *iconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bike_Share_Toronto_logo"]];
+            iconView.frame = CGRectMake(0, 0, 45, 30);
+            bikeShareAnnotation.leftCalloutAccessoryView = iconView;
             
+            // on the right of my Callout display a UIButton I want a UIButtonTypeDetailDisclosure type
+            bikeShareAnnotation.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            bikeShareAnnotation.canShowCallout = YES;
             
-            
-            UITapGestureRecognizer *tapReg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnImageView:)];
-            [iconView addGestureRecognizer:tapReg];
+            // if you tap the left callout run an action method called didTapOnImageView
+            UITapGestureRecognizer *tapLeftCallOut = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnImageView:)];
+            [bikeShareAnnotation.leftCalloutAccessoryView addGestureRecognizer:tapLeftCallOut];
             iconView.userInteractionEnabled = YES;
         }
     }
-    
-    // on the right of my Callout display a UIButton
-   
     return bikeShareAnnotation;
 }
 
+
+//
 - (void)didTapOnImageView:(id)sender
 {
     id <MKAnnotation> annotation = [self.mapView selectedAnnotations][0];
@@ -187,7 +182,7 @@
     [mapitem openInMapsWithLaunchOptions:mapLaunchOptions];
 }
 
-// mapView:annotationView:calloutAccessoryControlTapped: is called when the user taps on left & right callout accessory UIControls.
+
 
 
 

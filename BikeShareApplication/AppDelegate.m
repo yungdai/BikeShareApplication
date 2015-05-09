@@ -23,7 +23,7 @@
     MapViewController *mapViewController = [[MapViewController alloc] init];
     mapViewController.title = @"Bike Share Locations";
     mapViewController.tabBarItem.image = [UIImage imageNamed:@"cycle_bike"];
-    mapViewController.view.backgroundColor = [UIColor blueColor];
+    mapViewController.view.backgroundColor = [UIColor greenColor];
     
     // create a MapViewController Nav Bar and init it into the mapViewController
     UINavigationController *mapViewControllerNav = [[UINavigationController alloc]initWithRootViewController: mapViewController];
@@ -34,7 +34,7 @@
     [[MoreInfoViewController alloc]init];
     moreInfoViewController.title = @"More Info";
     moreInfoViewController.tabBarItem.image = [UIImage imageNamed:@"info"];
-    moreInfoViewController.view.backgroundColor = [UIColor redColor];
+    moreInfoViewController.view.backgroundColor = [UIColor whiteColor];
     
     // create the tab bar controller
     UITabBarController *tabBarController = [[UITabBarController alloc] init];

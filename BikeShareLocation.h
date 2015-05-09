@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
+
 @interface BikeShareLocation : NSObject<MKAnnotation>
 
 
@@ -21,10 +22,10 @@
 @property (nonatomic, readwrite, copy) NSString *subtitle;
 
 // additional information about the bike share location
-@property (nonatomic, readwrite, copy) NSNumber *availableDocks;
-@property (nonatomic, readwrite, copy) NSNumber *totalDocks;
-@property (nonatomic, readwrite, copy) NSNumber *availableBikes;
-@property (nonatomic, readwrite, copy) NSString *stationName;
+@property (nonatomic, strong) NSNumber *availableDocks;
+@property (nonatomic, strong) NSNumber *totalDocks;
+@property (nonatomic, strong) NSNumber *availableBikes;
+@property (nonatomic, strong) NSString *stationName;
 
 
 
